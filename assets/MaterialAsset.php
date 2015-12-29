@@ -13,14 +13,19 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppAsset extends AssetBundle
+class MaterialAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+    public $sourcePath = '@themes/material';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/material-wfont.min.css',
+        'css/material.min.css',
+        'css/ripples.min.css',
+        //'css/material-wfont.min.css',
     ];
     public $js = [
+        'js/material.min.js',
+        'js/ripples.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

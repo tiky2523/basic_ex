@@ -1,5 +1,6 @@
 <?php
 
+Yii::setAlias('@themes', dirname(__DIR__) . '/themes');
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -9,13 +10,14 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'VIbCHUgKRGVP3C9VJ4_AH1kFL5DRcOui',
+            'cookieValidationKey' => 'H4r9q7mig_7ii84jMXfdHzCGBeETdbhJ',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'dektrium\user\models\User',
+            //'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -38,6 +40,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        ],
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableUnconfirmedLogin' => true,
+            'confirmWithin' => 21600,
+            'cost' => 12,
+            'admins' => ['admin']
+        ],
     ],
     'params' => $params,
 ];
