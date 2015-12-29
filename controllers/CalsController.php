@@ -14,6 +14,9 @@ use app\models\CalitemsSearch;
 use app\models\Model;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
+use app\components\AccessRule;
+use yii\filters\AccessControl;
+use dektrium\user\models\User;
 
 /**
  * CalsController implements the CRUD actions for Cals model.
@@ -30,6 +33,24 @@ class CalsController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'only'=> ['create','delete','view','update','index'],
+                'ruleConfig'=>[
+                    'class'=>AccessRule::className()
+                ],
+                'rules'=>[
+                    [
+                        'actions'=>['create','delete','view','update','index'],
+                        'allow'=> true,
+                        'roles'=>[                                                      
+                            User::ROLE_ADMIN
+
+                        ]
+                    ],                                     
+                ]
+            ]
         ];
     }
 
