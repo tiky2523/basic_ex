@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tool_id')->textInput() ?>
 
-    <?= $form->field($model, 'result')->dropDownList([ 'ผ่าน' => 'ผ่าน', 'ไม่ผ่าน' => 'ไม่ผ่าน', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'result')->dropDownList([ 'ผ่าน' => 'ผ่าน', 'ไม่ผ่าน' => 'ไม่ผ่าน',], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'cuase')->textInput(['maxlength' => true]) ?>
 
